@@ -365,7 +365,7 @@
       <button class="pay-btn" id="payBtn" onclick="initiatePayment()">
         <span class="btn-content">
           <span>🔒</span>
-          <span>Pay ₹1,300 Securely</span>
+          <span>Pay ₹106.2 Securely</span>
         </span>
       </button>
     </div>
@@ -390,13 +390,10 @@
 </div>
 
 <script>
-  // ─── CONFIG ──────────────────────────────────────────────
-  // Replace with your Razorpay Key ID (test key starts with rzp_test_)
+ 
   const RAZORPAY_KEY_ID = "rzp_test_YOUR_KEY_HERE";
 
-  // In production this order_id must come from your backend
-  // See server.js for how to create it via Razorpay Orders API
-  const AMOUNT_PAISE = 130000; // ₹1,300 in paise (1 INR = 100 paise)
+  const AMOUNT_PAISE = 106.2
   // ─────────────────────────────────────────────────────────
 
   async function initiatePayment() {
@@ -414,23 +411,8 @@
     btn.querySelector('.btn-content').innerHTML = '<span>⏳</span><span>Preparing Payment…</span>';
 
     try {
-      // STEP 1: Create order from your backend
-      // Uncomment this in production:
-      /*
-      const res = await fetch('http://localhost:3000/create-order', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount: AMOUNT_PAISE, currency: 'INR' })
-      });
-      const orderData = await res.json();
-      const orderId = orderData.id;
-      */
-
-      // For DEMO: using a placeholder order ID
-      // Replace with real orderId from backend in production
-      const orderId = null; // will be set after backend integration
-
-      // STEP 2: Open Razorpay Checkout
+      
+      const orderId = null; 
       const options = {
         key: RAZORPAY_KEY_ID,
         amount: AMOUNT_PAISE,
